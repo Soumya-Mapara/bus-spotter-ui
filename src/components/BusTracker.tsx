@@ -4,6 +4,7 @@ import BusInput from './BusInput';
 import BusMap from './BusMap';
 import LocationDisplay from './LocationDisplay';
 import { useToast } from '@/hooks/use-toast';
+import { API_ENDPOINTS } from '@/config/api';
 
 interface BusLocation {
   bus_id: string;
@@ -31,7 +32,7 @@ const BusTracker = () => {
     setBusId(inputBusId);
 
     try {
-      const response = await fetch('/latest');
+      const response = await fetch(API_ENDPOINTS.latest);
       
       if (!response.ok) {
         throw new Error(`Failed to fetch bus data: ${response.statusText}`);
